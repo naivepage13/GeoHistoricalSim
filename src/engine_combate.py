@@ -1,24 +1,27 @@
 import random
 
 def resolver_combate(atacante, defensor):
-    print(f"\n--- Início do Conflito: {atacante.nome} vs {defensor.nome} ---")
+    # Regra de Logística: Manter o exército custa 1% do Poder Militar em bilhões
+    custo_operacional = atacante.poder_militar * 0.01
     
-    # Adicionamos um fator de "sorte" ou "tática" de 1 a 20
-    bonus_atacante = random.randint(1, 20)
-    bonus_defensor = random.randint(1, 20)
+    penalidade_logistica = 0
+    if atacante.tesouro < custo_operacional:
+        penalidade_logistica = 15 # Reduz 15 pontos de força por falta de verba
+        print(f"⚠️ {atacante.nome} está com problemas de suprimento! (-{penalidade_logistica} forca)")
     
-    # Cálculo de força total
-    forca_ataque = atacante.poder_militar + bonus_atacante
-    forca_defesa = defensor.poder_militar + bonus_defensor
+    # Consumo de recursos
+    atacante.tesouro -= custo_operacional
     
-    print(f"Ataque: {forca_ataque} (Base: {atacante.poder_militar} + Sorte: {bonus_atacante})")
-    print(f"Defesa: {forca_defesa} (Base: {defensor.poder_militar} + Sorte: {bonus_defensor})")
+    # Cálculo de força com os novos modificadores
+    bonus_sorte = random.randint(1, 20)
+    forca_final = (atacante.poder_militar - penalidade_logistica) + bonus_sorte
     
-    if forca_ataque > forca_defesa:
-        print(f"Resultado: Vitória de {atacante.nome}!")
-        defensor.estabilidade -= 10  # Dano à estabilidade do perdedor
-        return True
+    print(f"Força Final de Ataque de {atacante.nome}: {forca_final}")
+    
+    # Comparação (Simplificada para o exemplo)
+    if forca_final > defensor.poder_militar:
+        print(f"🏆 {atacante.nome} venceu a batalha!")
+        defensor.estabilidade -= 10
     else:
-        print(f"Resultado: {defensor.nome} conseguiu repelir o ataque!")
-        atacante.estabilidade -= 5   # Custo para quem tentou atacar e falhou
-        return False
+        print(f"❌ {defensor.nome} defendeu com sucesso!")
+        atacante.estabilidade -= 5
