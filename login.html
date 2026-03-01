@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoHistoricalSim - Acesso</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container" id="login-form">
+        <h2>Acesso ao Comando</h2>
+        <form>
+            <div class="input-group">
+                <label>E-mail do Comandante</label>
+                <input type="email" placeholder="exemplo@geosim.com" required>
+            </div>
+            <div class="input-group">
+                <label>Senha Criptografada</label>
+                <input type="password" placeholder="••••••••" required>
+            </div>
+            <button type="submit">ENTRAR NO SISTEMA</button>
+        </form>
+        <div class="toggle-link">
+            Novo por aqui? <a onclick="toggleForm()">Solicitar Credenciais</a>
+        </div>
+    </div>
+
+    <div class="container hidden" id="register-form">
+        <h2>Novo Cadastro</h2>
+        <form>
+            <div class="input-group">
+                <label>Nome Completo</label>
+                <input type="text" placeholder="Seu Nome" required>
+            </div>
+            <div class="input-group">
+                <label>E-mail Corporativo</label>
+                <input type="email" placeholder="seuemail@provedor.com" required>
+            </div>
+            <div class="input-group">
+                <label>Definir Senha</label>
+                <input type="password" placeholder="Mínimo 8 caracteres" required>
+            </div>
+            <button type="submit">CRIAR CONTA</button>
+        </form>
+        <div class="toggle-link">
+            Já possui acesso? <a onclick="toggleForm()">Voltar ao Login</a>
+        </div>
+    </div>
+
+    <script>
+        function toggleForm() {
+            document.getElementById('login-form').classList.toggle('hidden');
+            document.getElementById('register-form').classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>

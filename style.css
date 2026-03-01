@@ -1,0 +1,113 @@
+/* Configurações Globais */
+:root {
+    --primary-color: #44ff44; /* Verde Militar/Digital */
+    --bg-dark: #0f0f0f;
+    --card-bg: #1e1e1e;
+    --input-bg: #2a2a2a;
+    --text-color: #ffffff;
+    --text-muted: #888888;
+    --border-color: #333333;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container Principal */
+.container {
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid var(--border-color);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Formulários e Inputs */
+.input-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+    color: #bbb;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    background: var(--input-bg);
+    border: 1px solid #444;
+    color: white;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: var(--primary-color);
+}
+
+/* Botões */
+button {
+    width: 100%;
+    padding: 12px;
+    background: var(--primary-color);
+    border: none;
+    color: #000;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #33cc33;
+    transform: translateY(-2px);
+}
+
+/* Links de Troca */
+.toggle-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.85em;
+    color: var(--text-muted);
+}
+
+.toggle-link a {
+    color: var(--primary-color);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.toggle-link a:hover {
+    text-decoration: underline;
+}
+
+.hidden {
+    display: none;
+}

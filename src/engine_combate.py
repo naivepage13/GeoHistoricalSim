@@ -25,3 +25,5 @@ def resolver_combate(atacante, defensor):
     else:
         print(f"❌ {defensor.nome} defendeu com sucesso!")
         atacante.estabilidade -= 5
+
+        
