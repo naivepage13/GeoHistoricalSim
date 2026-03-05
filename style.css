@@ -276,10 +276,55 @@ body {
     padding: 20px;
     flex: 1 1 250px;
     min-width: 200px;
+    max-height: 600px;
+    overflow-y: auto;
 }
 
 .stat-box h2 {
     margin-bottom: 10px;
+}
+
+#box-military {
+    flex: 1 1 100%;
+    min-width: 100%;
+}
+
+/* Military Cards */
+.military-card {
+    background: linear-gradient(135deg, #1e1e1e 0%, #252525 100%);
+    border-left: 4px solid var(--primary-color);
+    border-radius: 6px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.military-card h3 {
+    margin: 0 0 12px 0;
+    color: var(--primary-color);
+    font-size: 1.1em;
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #333;
+    font-size: 0.9em;
+}
+
+.stat-row:last-child {
+    border-bottom: none;
+}
+
+.stat-row span:first-child {
+    color: #bbb;
+}
+
+.stat-value {
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 1.05em;
 }
 /* Meu País panel */
 #meu-pais {
