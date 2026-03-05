@@ -53,6 +53,52 @@
             document.getElementById('login-form').classList.toggle('hidden');
             document.getElementById('register-form').classList.toggle('hidden');
         }
+
+        // Carregar usuários do localStorage
+        function loadUsers() {
+            const users = localStorage.getItem('users');
+            return users ? JSON.parse(users) : [];
+        }
+
+        // Salvar usuários no localStorage
+        function saveUsers(users) {
+            localStorage.setItem('users', JSON.stringify(users));
+        }
+
+        // Manipular registro
+        document.getElementById('register-form').querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = this.querySelector('input[type="text"]').value;
+            const email = this.querySelector('input[type="email"]').value;
+            const password = this.querySelector('input[type="password"]').value;
+
+            const users = loadUsers();
+            // Verificar se e-mail já existe
+            if (users.find(user => user.email === email)) {
+                alert('E-mail já cadastrado!');
+                return;
+            }
+            users.push({ name, email, password });
+            saveUsers(users);
+            alert('Conta criada com sucesso!');
+            toggleForm(); // Voltar para login
+        });
+
+        // Manipular login
+        document.getElementById('login-form').querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            const password = this.querySelector('input[type="password"]').value;
+
+            const users = loadUsers();
+            const user = users.find(user => user.email === email && user.password === password);
+            if (user) {
+                // Redirecionar para index.html
+                window.location.href = 'index.html';
+            } else {
+                alert('Credenciais incorretas!');
+            }
+        });
     </script>
 </body>
 </html>
