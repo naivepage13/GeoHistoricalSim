@@ -32,25 +32,25 @@
 
     <div id="actions-sidebar">
         <h2>Ações do Jogador</h2>
+        
         <div class="action-group">
-            <label for="diplomatic">Ações Diplomáticas</label>
-            <textarea id="diplomatic" placeholder="Insira ações diplomáticas..."></textarea>
-            <button onclick="submitAction('diplomatic')">Executar Diplomática</button>
+            <label>Ações Diplomáticas</label>
+            <button onclick="abrirFormulario('diplomatic')">Criar ação diplomática</button>
         </div>
+
         <div class="action-group">
-            <label for="military">Ações Militares</label>
-            <textarea id="military" placeholder="Insira ações militares..."></textarea>
-            <button onclick="submitAction('military')">Executar Militar</button>
+            <label>Ações Militares</label>
+            <button onclick="abrirFormulario('military')">Criar ação militar</button>
         </div>
+
         <div class="action-group">
-            <label for="general">Ações Gerais</label>
-            <textarea id="general" placeholder="Insira ações gerais..."></textarea>
-            <button onclick="submitAction('general')">Executar Geral</button>
+            <label>Ações Gerais</label>
+            <button onclick="abrirFormulario('general')">Criar ação geral</button>
         </div>
+
         <div class="action-group">
-            <label for="economic">Ações Econômicas</label>
-            <textarea id="economic" placeholder="Insira ações econômicas..."></textarea>
-            <button onclick="submitAction('economic')">Executar Econômica</button>
+            <label>Ações Econômicas</label>
+            <button onclick="abrirFormulario('economic')">Criar ação econômica</button>
         </div>
     </div>
 
@@ -92,14 +92,8 @@
             window.location.href = 'stats.html';
         }
 
-        function submitAction(type) {
-            const textarea = document.getElementById(type);
-            const action = textarea.value.trim();
-            if (action) {
-                document.getElementById('console').innerHTML += `<p>> Ação ${type} executada: ${action}</p>`;
-                // Aqui, integrar com o engine Python para gerar narração
-                textarea.value = ''; // Limpar após enviar
-            }
+        function abrirFormulario(tipo) {
+            window.location.href = `action.html?type=${tipo}`;
         }
 
         renderizar();
