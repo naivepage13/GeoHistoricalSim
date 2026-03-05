@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Estatísticas do Meu País</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header id="stats-header">
+        <h1>Estatísticas</h1>
+        <button onclick="window.location.href='index.html'">Voltar</button>
+    </header>
+    <div id="stats-container">
+        <div class="stat-box" id="box-economic">
+            <h2>Economia</h2>
+            <p id="stat-economic"></p>
+        </div>
+        <div class="stat-box" id="box-military">
+            <h2>Militar</h2>
+            <p id="stat-military"></p>
+        </div>
+        <div class="stat-box" id="box-agreements">
+            <h2>Acordos</h2>
+            <p id="stat-agreements"></p>
+        </div>
+        <!-- outras categorias podem ser adicionadas aqui -->
+    </div>
+    <script>
+        const paises = [
+            { nome: "Brasil", poder: 70, estabilidade: 100, economia: "1.2T", acordos: ["ONU", "Mercosul"] },
+            { nome: "Argentina", poder: 50, estabilidade: 100, economia: "450B", acordos: ["Mercosul"] }
+        ];
+
+        function loadStats() {
+            const nome = localStorage.getItem('meuPais');
+            if (!nome) {
+                alert('Nenhum país selecionado.');
+                window.location.href = 'index.html';
+                return;
+            }
+            const p = paises.find(x => x.nome === nome);
+            if (!p) {
+                alert('Dados do país não encontrados.');
+                return;
+            }
+            document.getElementById('stat-economic').textContent = p.economia || 'N/A';
+            document.getElementById('stat-military').textContent = p.poder || 'N/A';
+            document.getElementById('stat-agreements').textContent = (p.acordos || []).join(', ');
+        }
+
+        loadStats();
+    </script>
+</body>
+</html>

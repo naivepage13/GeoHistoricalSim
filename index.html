@@ -11,10 +11,20 @@
         <h2>Países</h2>
         <div id="lista-paises">
         </div>
+        <div id="meu-pais" class="hidden">
+            <h3>Dados de: <span id="nome-meu-pais"></span></h3>
+            <p>Economia: <span id="eco-meu-pais"></span></p>
+            <p>Militar: <span id="mil-meu-pais"></span></p>
+            <p>Acordos: <span id="acordos-meu-pais"></span></p>
+            <button onclick="voltarLista()">Voltar à lista</button>
+        </div>
     </div>
 
     <div id="main">
-        <h1>Centro de Comando Geopolítico</h1>
+        <header id="main-header">
+            <h1>Centro de Comando Geopolítico</h1>
+            <button id="btn-meu-pais" onclick="goToStats()">Estatísticas</button>
+        </header>
         <div id="console">
             <p>> Sistema inicializado. Aguardando ordens...</p>
         </div>
@@ -47,8 +57,8 @@
     <script>
         // Aqui conectaremos a lógica que já começamos a criar
         const paises = [
-            { nome: "Brasil", poder: 70, estabilidade: 100 },
-            { nome: "Argentina", poder: 50, estabilidade: 100 }
+            { nome: "Brasil", poder: 70, estabilidade: 100, economia: "1.2T", acordos: ["ONU", "Mercosul"] },
+            { nome: "Argentina", poder: 50, estabilidade: 100, economia: "450B", acordos: ["Mercosul"] }
         ];
 
         function renderizar() {
@@ -65,6 +75,21 @@
 
         function atacar(nome) {
             document.getElementById('console').innerHTML += `<p>> Ataque iniciado contra ${nome}...</p>`;
+        }
+
+        // carregamento do país administrado (armazenado no login ou em outro fluxo)
+        let meuPais = null;
+        const saved = localStorage.getItem('meuPais');
+        if (saved) {
+            meuPais = paises.find(p => p.nome === saved);
+        }
+
+        function goToStats() {
+            if (!meuPais) {
+                alert('Nenhum país atribuído.');
+                return;
+            }
+            window.location.href = 'stats.html';
         }
 
         function submitAction(type) {
