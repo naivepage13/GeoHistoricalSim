@@ -3,28 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <title>GeoHistoricalSim v0.1</title>
-    <style>
-        body { font-family: sans-serif; background: #1a1a1a; color: white; display: flex; }
-        #sidebar { width: 300px; border-right: 1px solid #444; padding: 20px; }
-        #main { flex-grow: 1; padding: 20px; }
-        .pais-card { background: #333; padding: 10px; margin-bottom: 10px; border-radius: 5px; }
-        .btn-atacar { background: #ff4444; color: white; border: none; padding: 5px 10px; cursor: pointer; }
-        .estabilidade-bar { background: #555; height: 10px; width: 100%; margin-top: 5px; }
-        .progresso { background: #44ff44; height: 100%; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div id="sidebar">
         <h2>Países</h2>
         <div id="lista-paises">
-            </div>
+        </div>
     </div>
 
     <div id="main">
         <h1>Centro de Comando Geopolítico</h1>
-        <div id="console" style="background: black; height: 300px; padding: 10px; overflow-y: scroll;">
+        <div id="console">
             <p>> Sistema inicializado. Aguardando ordens...</p>
+        </div>
+    </div>
+
+    <div id="actions-sidebar">
+        <h2>Ações do Jogador</h2>
+        <div class="action-group">
+            <label for="diplomatic">Ações Diplomáticas</label>
+            <textarea id="diplomatic" placeholder="Insira ações diplomáticas..."></textarea>
+            <button onclick="submitAction('diplomatic')">Executar Diplomática</button>
+        </div>
+        <div class="action-group">
+            <label for="military">Ações Militares</label>
+            <textarea id="military" placeholder="Insira ações militares..."></textarea>
+            <button onclick="submitAction('military')">Executar Militar</button>
+        </div>
+        <div class="action-group">
+            <label for="general">Ações Gerais</label>
+            <textarea id="general" placeholder="Insira ações gerais..."></textarea>
+            <button onclick="submitAction('general')">Executar Geral</button>
+        </div>
+        <div class="action-group">
+            <label for="economic">Ações Econômicas</label>
+            <textarea id="economic" placeholder="Insira ações econômicas..."></textarea>
+            <button onclick="submitAction('economic')">Executar Econômica</button>
         </div>
     </div>
 
@@ -49,6 +65,16 @@
 
         function atacar(nome) {
             document.getElementById('console').innerHTML += `<p>> Ataque iniciado contra ${nome}...</p>`;
+        }
+
+        function submitAction(type) {
+            const textarea = document.getElementById(type);
+            const action = textarea.value.trim();
+            if (action) {
+                document.getElementById('console').innerHTML += `<p>> Ação ${type} executada: ${action}</p>`;
+                // Aqui, integrar com o engine Python para gerar narração
+                textarea.value = ''; // Limpar após enviar
+            }
         }
 
         renderizar();

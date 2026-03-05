@@ -111,3 +111,125 @@ button:hover {
 .hidden {
     display: none;
 }
+
+/* Toast Notifications */
+.toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 1000;
+}
+
+.toast.show {
+    opacity: 1;
+}
+
+/* Index Page Styles */
+body {
+    font-family: sans-serif;
+    background: #1a1a1a;
+    color: white;
+    display: flex;
+    height: 100vh;
+}
+
+#sidebar {
+    width: 250px;
+    border-right: 1px solid #444;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+#main {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+#actions-sidebar {
+    width: 300px;
+    border-left: 1px solid #444;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.pais-card {
+    background: #333;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.btn-atacar {
+    background: #ff4444;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.estabilidade-bar {
+    background: #555;
+    height: 10px;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.progresso {
+    background: #44ff44;
+    height: 100%;
+}
+
+#console {
+    background: black;
+    flex-grow: 1;
+    padding: 10px;
+    overflow-y: scroll;
+    border-radius: 5px;
+    font-family: monospace;
+}
+
+.action-group {
+    margin-bottom: 20px;
+}
+
+.action-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.action-group textarea {
+    width: 100%;
+    height: 80px;
+    background: var(--input-bg);
+    border: 1px solid #444;
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+    resize: vertical;
+}
+
+.action-group button {
+    width: 100%;
+    padding: 8px;
+    background: var(--primary-color);
+    border: none;
+    color: #000;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.action-group button:hover {
+    background: #33cc33;
+}
