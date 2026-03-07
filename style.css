@@ -281,7 +281,7 @@ body {
 #main-header {
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* botão no canto esquerdo */
+    justify-content: center;
     gap: 20px;
     margin-bottom: 20px;
 }
@@ -302,7 +302,7 @@ body {
 #stats-header {
     display: none;
 }
-}
+
 
 #stats-container {
     display: flex;
